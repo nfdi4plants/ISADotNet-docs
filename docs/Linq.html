@@ -3,7 +3,7 @@
     <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>
-      DataPLANT documentation - Index
+      DataPLANT documentation - Linq
     </title>
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -83,13 +83,38 @@
 
       </nfdi-sidebar-element>
       <h1 class="front-header">
-        Index
+        Linq
       </h1>
       <i class="help">
-        last updated at 2022-06-06
+        last updated at 2023-02-14
       </i>
       <nfdi-toc></nfdi-toc>
-      <p>This is a landing page. Feel free to click around in the sidebar.</p>
+      <nfdi-h1 id="linq">Linq</nfdi-h1>
+<nfdi-code class="language-fsharp">#r "nuget: ISADotNet.QueryModel"
+
+open ISADotNet.QueryModel
+
+let sample = ps.LastSamples.Head
+</nfdi-code>
+<nfdi-h2 id="general">General</nfdi-h2>
+<nfdi-code class="language-fsharp">open ISADotNet.QueryModel.Linq.Query
+
+isa {
+    for value in sample.Values do
+        whereName "Cell line"
+        selectValueText
+        head
+}           
+</nfdi-code>
+<nfdi-h2 id="spreadsheet">Spreadsheet</nfdi-h2>
+<nfdi-code class="language-fsharp">open ISADotNet.QueryModel.Linq.Spreadsheet
+cells {
+    for value in sample.Values do
+        whereName "Cell line"
+        selectValueText
+        head
+}           
+</nfdi-code>
 
       <h3>
         DataPLANT Support
@@ -108,7 +133,7 @@
         </span>
       </div>
       <div>
-        <a target="_blank" href="https://github.com/nfdi4plants/ISADotNet-docs/blob/main/src/docs/index.md" style="margin-left: auto; display: block; width: 130px;">
+        <a target="_blank" href="https://github.com/nfdi4plants/ISADotNet-docs/blob/main/src/docs/Linq.md" style="margin-left: auto; display: block; width: 130px;">
           ✏️ Edit this page
         </a>
       </div>

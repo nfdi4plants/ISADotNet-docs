@@ -1,25 +1,9 @@
 <html class="has-navbar-fixed-top" style="scroll-behavior: smooth;">
   <head>
-
-        <script type="text/javascript">
-          var wsUri = "ws://localhost:8080/websocket";
-      function init()
-      {
-        websocket = new WebSocket(wsUri);
-        websocket.onclose = function(evt) { onClose(evt) };
-      }
-      function onClose(evt)
-      {
-        console.log('closing');
-        websocket.close();
-        document.location.reload();
-      }
-      window.addEventListener("load", init, false);
-      </script>
-            <meta charSet="utf-8"/>
+    <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>
-      DataPLANT documentation - Code Examples
+      DataPLANT documentation - XLSX
     </title>
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -72,46 +56,66 @@
     <nfdi-body class="content" hasSidebar="true">
       <nfdi-sidebar-element slot="sidebar" isActive="true">
         <div slot="title">
-          Metadata
+          Read/Write
         </div>
-        <h1 slot="inner" href="/placeholder/docs/metadata.html">Metadata</h1>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#what-is-metadata">What is metadata?</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#where-does-metadata-come-from">Where does metadata come from?</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#why-do-i-benefit-from-metadata">Why do I benefit from metadata?</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#what-tasks-are-important-for-rich-metadata">What tasks are important for rich metadata?</h2>
-<h3 slot="inner" href="/placeholder/docs/metadata.html#collection">Collection</h3>
-<h3 slot="inner" href="/placeholder/docs/metadata.html#structuring">Structuring</h3>
-<h3 slot="inner" href="/placeholder/docs/metadata.html#sharing-and-curation">Sharing and curation</h3>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#how-does-dataplant-support-me-in-metadata-annotation">How does DataPLANT support me in metadata annotation</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#dataplant-support">DataPLANT Support</h2>
+        <h1 slot="inner" href="/ISADotNet-docs/docs/xlsx_io.html">XLSX</h1>
+<h1 slot="inner" href="/ISADotNet-docs/docs/json_io.html">JSon</h1>
+<h2 slot="inner" href="/ISADotNet-docs/docs/json_io.html#serialization-and-deserialization">Serialization and Deserialization</h2>
+<h2 slot="inner" href="/ISADotNet-docs/docs/json_io.html#validation">Validation</h2>
+<h2 slot="inner" href="/ISADotNet-docs/docs/json_io.html#generic-serialization-and-deserialization">Generic Serialization and Deserialization</h2>
 
       </nfdi-sidebar-element>
       <nfdi-sidebar-element slot="sidebar" isActive="true">
         <div slot="title">
-          Fornax Testing Example
+          Querymodel
         </div>
-        <h1 slot="inner" href="/placeholder/docs/CodeExamples.html">Code Examples</h1>
+        <h1 slot="inner" href="/ISADotNet-docs/docs/querymodel.html">General</h1>
+<h1 slot="inner" href="/ISADotNet-docs/docs/linq.html">Linq</h1>
+<h2 slot="inner" href="/ISADotNet-docs/docs/linq.html#generic">Generic</h2>
+<h2 slot="inner" href="/ISADotNet-docs/docs/linq.html#spreadsheet">Spreadsheet (XLSX)</h2>
+
+      </nfdi-sidebar-element>
+      <nfdi-sidebar-element slot="sidebar" isActive="true">
+        <div slot="title">
+          Links
+        </div>
+        <h1 slot="inner" href="/ISADotNet-docs/https://github.com/nfdi4plants/ISADotNet">Source Repository</h1>
 
       </nfdi-sidebar-element>
       <h1 class="front-header">
-        Code Examples
+        XLSX
       </h1>
       <i class="help">
-        last updated at 2022-05-09
+        last updated at 2023-02-14
       </i>
       <nfdi-toc></nfdi-toc>
-      <nfdi-code>// Code testing no language
+      <nfdi-h1 id="isa-xlsx">ISA-XLSX</nfdi-h1>
+<p><a href="https://isa-specs.readthedocs.io/en/latest/isatab.html">https://isa-specs.readthedocs.io/en/latest/isatab.html</a></p>
+<p>ISADotNet contains a <code>fromString</code> and <code>toString</code> function for the three ISA-XLSX files. These files follow the object defined by the official <code>ISA-Json</code> schema:</p>
+<nfdi-h2 id="investigation">Investigation</nfdi-h2>
+<p><a href="https://isa-specs.readthedocs.io/en/latest/isatab.html#investigation-file">https://isa-specs.readthedocs.io/en/latest/isatab.html#investigation-file</a></p>
+<nfdi-code class="language-fsharp">#r "nuget: ISADotNet.XLSX"
 
-let x = 2010
+open ISADotNet.XLSX
+
+let investigationFilePath = ""
+let investigation = Investigation.fromFile investigationFilePath
+Investigation.toFile investigationFilePath investigation
 </nfdi-code>
-<nfdi-code class="language-fsharp">// Code testing with language
+<nfdi-h2 id="assaystudy">Assay/Study</nfdi-h2>
+<p><a href="https://isa-specs.readthedocs.io/en/latest/isatab.html#study-and-assay-files">https://isa-specs.readthedocs.io/en/latest/isatab.html#study-and-assay-files</a></p>
+<nfdi-code class="language-fsharp">open ISADotNet.XLSX.StudyFile
 
-let x = 20
-</nfdi-code>
-<p>Code testing with inline <code>code</code> example!</p>
-<nfdi-code class="language-bash">// Code testing with multiple &lt; >
+let studyFilePath = ""
+let study = Study.fromFile investigationFilePath
+Study.toFile studyFilePath study
 
-# https://git.nfdi4plants.org/&lt;yourusername>/&lt;yourarc>
+
+open ISADotNet.XLSX.AssayFile
+
+let assayFilePath = ""
+let contacts,assay = Assay.fromFile investigationFilePath
+Assay.toFile assayFilePath contacts assay
 </nfdi-code>
 
       <h3>
@@ -131,7 +135,7 @@ let x = 20
         </span>
       </div>
       <div>
-        <a target="_blank" href="https://github.com/nfdi4plants/nfdi4plants.github.io/tree/main/src/docs/CodeExamples.md" style="margin-left: auto; display: block; width: 130px;">
+        <a target="_blank" href="https://github.com/nfdi4plants/ISADotNet-docs/blob/main/src/docs/XLSX_IO.md" style="margin-left: auto; display: block; width: 130px;">
           ✏️ Edit this page
         </a>
       </div>

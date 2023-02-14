@@ -1,22 +1,6 @@
 <html class="has-navbar-fixed-top" style="scroll-behavior: smooth;">
   <head>
-
-        <script type="text/javascript">
-          var wsUri = "ws://localhost:8080/websocket";
-      function init()
-      {
-        websocket = new WebSocket(wsUri);
-        websocket.onclose = function(evt) { onClose(evt) };
-      }
-      function onClose(evt)
-      {
-        console.log('closing');
-        websocket.close();
-        document.location.reload();
-      }
-      window.addEventListener("load", init, false);
-      </script>
-            <meta charSet="utf-8"/>
+    <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>
       DataPLANT documentation - Index
@@ -72,25 +56,30 @@
     <nfdi-body class="content" hasSidebar="true">
       <nfdi-sidebar-element slot="sidebar" isActive="true">
         <div slot="title">
-          Metadata
+          Read/Write
         </div>
-        <h1 slot="inner" href="/placeholder/docs/metadata.html">Metadata</h1>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#what-is-metadata">What is metadata?</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#where-does-metadata-come-from">Where does metadata come from?</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#why-do-i-benefit-from-metadata">Why do I benefit from metadata?</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#what-tasks-are-important-for-rich-metadata">What tasks are important for rich metadata?</h2>
-<h3 slot="inner" href="/placeholder/docs/metadata.html#collection">Collection</h3>
-<h3 slot="inner" href="/placeholder/docs/metadata.html#structuring">Structuring</h3>
-<h3 slot="inner" href="/placeholder/docs/metadata.html#sharing-and-curation">Sharing and curation</h3>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#how-does-dataplant-support-me-in-metadata-annotation">How does DataPLANT support me in metadata annotation</h2>
-<h2 slot="inner" href="/placeholder/docs/metadata.html#dataplant-support">DataPLANT Support</h2>
+        <h1 slot="inner" href="/ISADotNet-docs/docs/xlsx_io.html">XLSX</h1>
+<h1 slot="inner" href="/ISADotNet-docs/docs/json_io.html">JSon</h1>
+<h2 slot="inner" href="/ISADotNet-docs/docs/json_io.html#serialization-and-deserialization">Serialization and Deserialization</h2>
+<h2 slot="inner" href="/ISADotNet-docs/docs/json_io.html#validation">Validation</h2>
+<h2 slot="inner" href="/ISADotNet-docs/docs/json_io.html#generic-serialization-and-deserialization">Generic Serialization and Deserialization</h2>
 
       </nfdi-sidebar-element>
       <nfdi-sidebar-element slot="sidebar" isActive="true">
         <div slot="title">
-          Fornax Testing Example
+          Querymodel
         </div>
-        <h1 slot="inner" href="/placeholder/docs/CodeExamples.html">Code Examples</h1>
+        <h1 slot="inner" href="/ISADotNet-docs/docs/querymodel.html">General</h1>
+<h1 slot="inner" href="/ISADotNet-docs/docs/linq.html">Linq</h1>
+<h2 slot="inner" href="/ISADotNet-docs/docs/linq.html#generic">Generic</h2>
+<h2 slot="inner" href="/ISADotNet-docs/docs/linq.html#spreadsheet">Spreadsheet (XLSX)</h2>
+
+      </nfdi-sidebar-element>
+      <nfdi-sidebar-element slot="sidebar" isActive="true">
+        <div slot="title">
+          Links
+        </div>
+        <h1 slot="inner" href="/ISADotNet-docs/https://github.com/nfdi4plants/ISADotNet">Source Repository</h1>
 
       </nfdi-sidebar-element>
       <h1 class="front-header">
@@ -119,7 +108,7 @@
         </span>
       </div>
       <div>
-        <a target="_blank" href="https://github.com/nfdi4plants/nfdi4plants.github.io/tree/main/src/docs/index.md" style="margin-left: auto; display: block; width: 130px;">
+        <a target="_blank" href="https://github.com/nfdi4plants/ISADotNet-docs/blob/main/src/docs/index.md" style="margin-left: auto; display: block; width: 130px;">
           ✏️ Edit this page
         </a>
       </div>
