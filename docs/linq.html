@@ -3,7 +3,7 @@
     <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>
-      DataPLANT documentation - XLSX
+      DataPLANT documentation - Linq
     </title>
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -83,39 +83,37 @@
 
       </nfdi-sidebar-element>
       <h1 class="front-header">
-        XLSX
+        Linq
       </h1>
       <i class="help">
         last updated at 2023-02-14
       </i>
       <nfdi-toc></nfdi-toc>
-      <nfdi-h1 id="isa-xlsx">ISA-XLSX</nfdi-h1>
-<p><a href="https://isa-specs.readthedocs.io/en/latest/isatab.html">https://isa-specs.readthedocs.io/en/latest/isatab.html</a></p>
-<p>ISADotNet contains a <code>fromString</code> and <code>toString</code> function for the three ISA-XLSX files. These files follow the object defined by the official <code>ISA-Json</code> schema:</p>
-<nfdi-h2 id="investigation">Investigation</nfdi-h2>
-<p><a href="https://isa-specs.readthedocs.io/en/latest/isatab.html#investigation-file">https://isa-specs.readthedocs.io/en/latest/isatab.html#investigation-file</a></p>
-<nfdi-code class="language-fsharp">#r "nuget: ISADotNet.XLSX"
+      <nfdi-h1 id="linq">Linq</nfdi-h1>
+<nfdi-code class="language-fsharp">#r "nuget: ISADotNet.QueryModel"
 
-open ISADotNet.XLSX
+open ISADotNet.QueryModel
 
-let investigationFilePath = ""
-let investigation = Investigation.fromFile investigationFilePath
-Investigation.toFile investigationFilePath investigation
+let sample = ps.LastSamples.Head
 </nfdi-code>
-<nfdi-h2 id="assaystudy">Assay/Study</nfdi-h2>
-<p><a href="https://isa-specs.readthedocs.io/en/latest/isatab.html#study-and-assay-files">https://isa-specs.readthedocs.io/en/latest/isatab.html#study-and-assay-files</a></p>
-<nfdi-code class="language-fsharp">open ISADotNet.XLSX.StudyFile
+<nfdi-h2 id="general">General</nfdi-h2>
+<nfdi-code class="language-fsharp">open ISADotNet.QueryModel.Linq.Query
 
-let studyFilePath = ""
-let study = Study.fromFile investigationFilePath
-Study.toFile studyFilePath study
-
-
-open ISADotNet.XLSX.AssayFile
-
-let assayFilePath = ""
-let contacts,assay = Assay.fromFile investigationFilePath
-Assay.toFile assayFilePath contacts assay
+isa {
+    for value in sample.Values do
+        whereName "Cell line"
+        selectValueText
+        head
+}           
+</nfdi-code>
+<nfdi-h2 id="spreadsheet">Spreadsheet</nfdi-h2>
+<nfdi-code class="language-fsharp">open ISADotNet.QueryModel.Linq.Spreadsheet
+cells {
+    for value in sample.Values do
+        whereName "Cell line"
+        selectValueText
+        head
+}           
 </nfdi-code>
 
       <h3>
@@ -135,7 +133,7 @@ Assay.toFile assayFilePath contacts assay
         </span>
       </div>
       <div>
-        <a target="_blank" href="https://github.com/nfdi4plants/ISADotNet-docs/blob/main/src/docs/XLSX_IO.md" style="margin-left: auto; display: block; width: 130px;">
+        <a target="_blank" href="https://github.com/nfdi4plants/ISADotNet-docs/blob/main/src/docs/linq.md" style="margin-left: auto; display: block; width: 130px;">
           ✏️ Edit this page
         </a>
       </div>
